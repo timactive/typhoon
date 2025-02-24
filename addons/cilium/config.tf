@@ -95,17 +95,22 @@ resource "kubernetes_config_map" "cilium" {
     # in the range of 1 and 255. Only relevant when building a mesh of clusters.
     cluster-id = "0"
 
+
+    #routing-mode = "tunnel"
+    routing-mode = "tunnel"
     # Encapsulation mode for communication between nodes
     # Possible values:
     #   - disabled
     #   - vxlan (default)
     #   - geneve
-    routing-mode = "tunnel"
-    tunnel       = "vxlan"
+    #tunnel       = "vxlan"
+    tunnel = "native"
     # Enables L7 proxy for L7 policy enforcement and visibility
     enable-l7-proxy = "true"
 
-    auto-direct-node-routes = "false"
+    auto-direct-node-routes = "true"
+    direct-routing-device = "enp8s0f1np1"
+    ipv4-native-routing-cidr = "192.168.100.0/24"
 
     # enableXTSocketFallback enables the fallback compatibility solution
     # when the xt_socket kernel module is missing and it is needed for
