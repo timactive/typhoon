@@ -97,14 +97,14 @@ resource "kubernetes_config_map" "cilium" {
 
 
     #routing-mode = "tunnel"
-    routing-mode = "tunnel"
+    routing-mode = "native"
     # Encapsulation mode for communication between nodes
     # Possible values:
     #   - disabled
     #   - vxlan (default)
     #   - geneve
     #tunnel       = "vxlan"
-    tunnel = "native"
+    tunnel = "disabled"
     # Enables L7 proxy for L7 policy enforcement and visibility
     enable-l7-proxy = "true"
 
